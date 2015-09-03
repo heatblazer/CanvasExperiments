@@ -10,7 +10,6 @@ function importScript(name){
 	el.appendChild(script);
 	script.onload = function(f) {
 		console.log("Loaded :" + name + " succes!"+f);
-        
 	}
 	
 }
@@ -29,15 +28,12 @@ function init() {
 
 window.onload = function(e) {
 
-var r, g, b;
-r = g= b = 200;
-var id = null;
-var ctx = null;
+
 
 var foo = function(f) {
-	ctx = f.getContext("2d");
+	var ctx = f.getContext("2d");
 	ctx.fillSytle = "green";
-	ctx.fillRect(0, 0, 120, 60);
+	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
 
@@ -53,18 +49,11 @@ var foo = function(f) {
 		}else {
 			obj.onclick=function(f) {
 				console.log("YOU CLICKED ME: "+obj.id);
+				test2();
 			}
 		}
 		return obj;
 	}); 
-	buttons[1].onclick = function() {
-		//test2();
-		var canv = document.getElementById("button1");
-		var c= canv.getContext("2d");
-		c.fillSytle = "#FF2012";
-		c.fillRect(0, 0, 60, 10);
-		console.log(c.fillSytle+"");
-	}
     /*
     for(var i=0; i < buttons.length; i++) {
         buttons[i].onclick = function(f) {
