@@ -38,18 +38,30 @@ var foo = function(f) {
 
 
 /* test1 */
-	importScript("test2.js");
+	importScript("red.js");
+	importScript("green.js");
+	importScript("blue.js");
 	init();
 
 	buttons = buttons.map(function(obj) {
 		if ( obj.id === "button1" ) {
 			obj.onclick =  function() {
-				foo(obj);
+				foo(obj); //local
 			}
-		}else {
+		}else if ( obj.id === "button0" ) {
 			obj.onclick=function(f) {
 				console.log("YOU CLICKED ME: "+obj.id);
-				test2();
+				paintRed(obj);
+			}
+		} else if ( obj.id === "button2") {
+			obj.onclick=function(f) {
+				console.log("YOU CLICKED ME: "+obj.id);
+				paintGreen(obj);
+			}
+		} else if ( obj.id === "button3" ) {
+			obj.onclick=function(f) {
+				console.log("YOU CLICKED ME: "+obj.id);
+				paintBlue(obj);
 			}
 		}
 		return obj;
