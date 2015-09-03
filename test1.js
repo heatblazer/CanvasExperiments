@@ -29,18 +29,42 @@ function init() {
 
 window.onload = function(e) {
 
+var r, g, b;
+r = g= b = 200;
+var id = null;
+var ctx = null;
+
+var foo = function(f) {
+	ctx = f.getContext("2d");
+	ctx.fillSytle = "green";
+	ctx.fillRect(0, 0, 120, 60);
+}
+
+
 /* test1 */
 	importScript("test2.js");
 	init();
 
 	buttons = buttons.map(function(obj) {
-		obj.onclick=function(f) {
-			console.log("YOU CLICKED ME: "+obj.id);
-            if ( obj.id === "button1") test2(obj);
+		if ( obj.id === "button1" ) {
+			obj.onclick =  function() {
+				foo(obj);
+			}
+		}else {
+			obj.onclick=function(f) {
+				console.log("YOU CLICKED ME: "+obj.id);
+			}
 		}
 		return obj;
 	}); 
-
+	buttons[1].onclick = function() {
+		//test2();
+		var canv = document.getElementById("button1");
+		var c= canv.getContext("2d");
+		c.fillSytle = "#FF2012";
+		c.fillRect(0, 0, 60, 10);
+		console.log(c.fillSytle+"");
+	}
     /*
     for(var i=0; i < buttons.length; i++) {
         buttons[i].onclick = function(f) {
