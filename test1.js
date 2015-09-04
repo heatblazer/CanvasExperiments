@@ -32,7 +32,7 @@ window.onload = function(e) {
 
 var foo = function(f) {
 	var ctx = f.getContext("2d");
-	ctx.fillSytle = "green";
+	ctx.fillSytle = "#BADA55";
 	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
@@ -51,7 +51,10 @@ var foo = function(f) {
 		}else if ( obj.id === "button0" ) {
 			obj.onclick=function(f) {
 				console.log("YOU CLICKED ME: "+obj.id);
-				paintRed(obj);
+        
+                setInterval(function() {
+                    paintRed(obj);
+                    }, 1000/60);
 			}
 		} else if ( obj.id === "button2") {
 			obj.onclick=function(f) {
@@ -63,7 +66,11 @@ var foo = function(f) {
 				console.log("YOU CLICKED ME: "+obj.id);
 				paintBlue(obj);
 			}
-		}
+		} else {
+            obj.onclick = function(f) {
+             foo(obj);   
+            }
+        }
 		return obj;
 	}); 
     /*
